@@ -1,1 +1,23 @@
-Hello World
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  </head>
+  <body>
+   <div id="repos">
+
+</div>
+$.ajax({
+  url: "https://api.github.com/users/alpertayfun/repos",
+  jsonp: true,
+  method: "GET",
+  dataType: "json",
+  success: function(res) {
+    console.log(res)
+    $.each(res, function(key, value) {
+    	console.log(value);
+      $("#repos").append('<a href="'+value.git_url+'">'+value.full_name+'</a><br>');
+    });
+  }
+});
+  </body>
+</html>
